@@ -18,6 +18,7 @@ body {
 .wrapper {
     max-width: 90rem;
     margin: auto;
+    padding-inline: 2rem;
 }
 
 /* ========================== HEADER =============================================== */
@@ -35,17 +36,47 @@ body {
     justify-content: space-between;
 }
 
-#header input {
-
-    width: 100%;
-    margin-top: 7.3rem;
-    height: 6.5rem;
-}
-
 #header h2 {
     color: #fff;
     font-size: 2.4rem;
 }
+
+/* ========================== INPUT =============================================== */
+
+#header .input-group {
+    margin: 3rem auto;
+    display: flex;
+    justify-content: center;
+}
+
+#header .input-group input {
+    width: 90rem;
+    height: 6.5rem;
+    margin-left: 0 !important;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+#header .input-group input::placeholder {
+    color: #fff;
+    opacity: 0.5;
+}
+
+#header .input-group input:focus {
+    outline: 0;
+}
+
+#header .input-group span {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 5px 0 0 5px;
+    color: #fff;
+    padding-right: 2rem;
+}
+
 
 /* ========================== CARDS =============================================== */
 
