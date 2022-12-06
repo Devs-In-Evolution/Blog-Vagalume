@@ -1,9 +1,12 @@
 const cardList = document.getElementById('cards')
 
+const filterElement = document.getElementById('input')
+filterElement.addEventListener('input', filterPost)
+
 fetch('https://www.vagalume.com.br/news/index.js')
   .then(response => response.json())
   .then(data => {
-
+    
     data.news.forEach(object => {
       const card = document.createElement('div')
       card.setAttribute('class', 'card')
@@ -67,4 +70,33 @@ function renderLinkIcon() {
   iconSvg.appendChild(iconPath)
 
   return iconSvg
+}
+
+function filterPost() {
+  if(Boolean(filterElement.value)) {
+    // console.log(cardList)
+
+    //Maikão percorre as li's dentro de cards
+    /* cardList retorna uma div,
+    então percorri entre os elementos filhos de cardList */
+    for(card of cardList.children) {
+
+      let title = card.querySelector('h1')
+      title = title.textContent.toLowerCase()
+
+      const filterText = filterElement.value.toLowerCase()
+
+      if(!title.includes(filterText)) {
+        card.style.display = 'none'
+
+      } else {
+        card.style.display = 'block'
+      }
+    }
+
+  } else {
+    for (card of cardList.children) {
+      card.style.display = 'block'
+    }
+  }
 }
