@@ -1,7 +1,8 @@
 const cardList = document.getElementById('cards')
+const filterElement = document.querySelector('.input-group input')
+const cards = cardList.children
 
-const filterElement = document.getElementById('input')
-filterElement.addEventListener('input', filterPost)
+filterElement.addEventListener('input', filterCards)
 
 fetch('https://www.vagalume.com.br/news/index.js')
   .then(response => response.json())
@@ -35,8 +36,31 @@ fetch('https://www.vagalume.com.br/news/index.js')
     })
   })
   .catch(error => {
-    console.log('Erro na requisição ${error}')
+    console.log(`Erro na requisição ${error}`)
   })
+
+
+function filterCards() {
+  if (filterElement.value) {
+    for (let card of cards) {
+      let title = card.querySelector('h1')
+      title = title.textContent.toLowerCase()
+
+      let filterText = filterElement.value.toLowerCase()
+
+      if (!title.includes(filterText)) {
+        card.style.display = "none"
+      }
+      else {
+        card.style.display = "block"
+      }
+    }
+  } else {
+    for (let card of cards) {
+      card.style.display = "block"
+    }
+  }
+}
 
 function dateFormat(date) {
 
@@ -48,7 +72,6 @@ function dateFormat(date) {
 
   return dateFormated
 }
-
 
 function renderLinkIcon() {
   const iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
@@ -70,33 +93,4 @@ function renderLinkIcon() {
   iconSvg.appendChild(iconPath)
 
   return iconSvg
-}
-
-function filterPost() {
-  if(Boolean(filterElement.value)) {
-    // console.log(cardList)
-
-    //Maikão percorre as li's dentro de cards
-    /* cardList retorna uma div,
-    então percorri entre os elementos filhos de cardList */
-    for(card of cardList.children) {
-
-      let title = card.querySelector('h1')
-      title = title.textContent.toLowerCase()
-
-      const filterText = filterElement.value.toLowerCase()
-
-      if(!title.includes(filterText)) {
-        card.style.display = 'none'
-
-      } else {
-        card.style.display = 'block'
-      }
-    }
-
-  } else {
-    for (card of cardList.children) {
-      card.style.display = 'block'
-    }
-  }
 }
