@@ -1,5 +1,5 @@
 const cardList = document.getElementById('cards')
-const filterElement = document.querySelector('div input')
+const filterElement = document.querySelector('.input-group input')
 const cards = cardList.children
 
 filterElement.addEventListener('input', filterCards)
@@ -39,16 +39,19 @@ fetch('https://www.vagalume.com.br/news/index.js')
     console.log(`Erro na requisição ${error}`)
   })
 
-function filterCards () {
-    if(filterElement.value != '') {
-      for (let card of cards) {
-        let title = card.querySelector('h1')
-        title = title.textContent.toLowerCase()
-        let filterText = filterElement.value.toLowerCase()
-        if(!title.includes(filterText)) {
+
+function filterCards() {
+  if (filterElement.value) {
+    for (let card of cards) {
+      let title = card.querySelector('h1')
+      title = title.textContent.toLowerCase()
+
+      let filterText = filterElement.value.toLowerCase()
+
+      if (!title.includes(filterText)) {
         card.style.display = "none"
-        }
-        else {
+      }
+      else {
         card.style.display = "block"
       }
     }
@@ -69,7 +72,6 @@ function dateFormat(date) {
 
   return dateFormated
 }
-
 
 function renderLinkIcon() {
   const iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
