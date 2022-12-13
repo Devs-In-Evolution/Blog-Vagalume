@@ -7,7 +7,7 @@ filterElement.addEventListener('input', filterCards)
 fetch('https://www.vagalume.com.br/news/index.js')
   .then(response => response.json())
   .then(data => {
-
+    
     data.news.forEach(object => {
       const card = document.createElement('div')
       card.setAttribute('class', 'card')
