@@ -80,7 +80,7 @@ function renderLinkIcon() {
     'path'
   )
 
-  iconSvg.setAttribute('fill', '#574AE8')
+  iconSvg.setAttribute('fill', '#99B236')
   iconSvg.setAttribute('viewBox', '0 0 20 18')
   iconSvg.setAttribute('width', '20')
   iconSvg.setAttribute('height', '18')

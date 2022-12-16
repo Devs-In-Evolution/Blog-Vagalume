@@ -102,7 +102,7 @@ body {
 }
 
 #posts .card {
-    background: var(--bg-card);
+    background: var(--gray-900);
     box-shadow: 0px 0px 10px rgba(19, 19, 31, 0.05);
     border-radius: 5px;
 }
@@ -123,7 +123,7 @@ body {
 
     padding-bottom: 2.2rem;
 
-    color: var(--date-card);
+    color: var(--gray-400);
 
 }
 
@@ -137,7 +137,7 @@ body {
 
     padding-inline: 2.4rem;
 
-    color: var(--title-card);
+    color: var(--green);
 }
 
 #posts p {
@@ -149,5 +149,5 @@ body {
     padding-bottom: 2.5rem;
 
 
-    color: var(--subtitle-card);
+    color: var(--gray-100);
 }
