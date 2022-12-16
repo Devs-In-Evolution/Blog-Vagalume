@@ -10,8 +10,8 @@ fetch('https://www.vagalume.com.br/news/index.js')
 
     data.news.forEach(object => {
       const localStorageItemShow = localStorage.getItem(`${object.id}`)
-      if (localStorageItemShow != 'true')
-        localStorage.setItem(`${object.id}`, false)
+      if (localStorageItemShow === null)
+        localStorage.setItem(`${object.id}`, 'notFavorite')
 
       const card = document.createElement('div')
       card.setAttribute('class', 'card')
@@ -26,14 +26,15 @@ fetch('https://www.vagalume.com.br/news/index.js')
       const renderLinkFull = renderLinkIconFull()
 
       renderLink.addEventListener('click', function (event) {
+        localStorage.setItem(`${object.id}`, 'isFavorite')
+        
+        location.reload()
 
-        if (localStorageItemShow != 'true')
-          localStorage.setItem(`${object.id}`, true)
-        else
-          localStorage.setItem(`${object.id}`, false)
+      }, false)
 
-        const localStorageItem = localStorage.getItem(`${object.id}`)
-        console.log('local', localStorageItem)
+      renderLinkFull.addEventListener('click', function (event) { 
+        localStorage.setItem(`${object.id}`, 'notFavorite')
+        
         location.reload()
 
       }, false)
@@ -50,7 +51,7 @@ fetch('https://www.vagalume.com.br/news/index.js')
       const localStorageItem = localStorage.getItem(`${object.id}`)
       console.log('localStorageItem', localStorageItem)
 
-      if (localStorageItem == 'true')
+      if (localStorageItem === 'isFavorite')
         header.appendChild(renderLinkFull)
       else
         header.appendChild(renderLink)
