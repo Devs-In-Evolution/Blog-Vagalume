@@ -7,8 +7,12 @@ filterElement.addEventListener('input', filterCards)
 fetch('https://www.vagalume.com.br/news/index.js')
   .then(response => response.json())
   .then(data => {
-    
+
     data.news.forEach(object => {
+      const localStorageItemShow = localStorage.getItem(`${object.id}`)
+      if (localStorageItemShow != 'true')
+        localStorage.setItem(`${object.id}`, false)
+
       const card = document.createElement('div')
       card.setAttribute('class', 'card')
 
@@ -19,6 +23,21 @@ fetch('https://www.vagalume.com.br/news/index.js')
       datePost.textContent = dateFormated
 
       const renderLink = renderLinkIcon()
+      const renderLinkFull = renderLinkIconFull()
+
+      renderLink.addEventListener('click', function (event) {
+
+        if (localStorageItemShow != 'true')
+          localStorage.setItem(`${object.id}`, true)
+        else
+          localStorage.setItem(`${object.id}`, false)
+
+        const localStorageItem = localStorage.getItem(`${object.id}`)
+        console.log('local', localStorageItem)
+        location.reload()
+
+      }, false)
+
 
       const title = document.createElement('h1')
       title.textContent = object.headline
@@ -27,7 +46,15 @@ fetch('https://www.vagalume.com.br/news/index.js')
       subtitle.textContent = object.kicker
 
       header.appendChild(datePost)
-      header.appendChild(renderLink)
+
+      const localStorageItem = localStorage.getItem(`${object.id}`)
+      console.log('localStorageItem', localStorageItem)
+
+      if (localStorageItem == 'true')
+        header.appendChild(renderLinkFull)
+      else
+        header.appendChild(renderLink)
+
       card.appendChild(header)
       card.appendChild(title)
       card.appendChild(subtitle)
@@ -94,3 +121,26 @@ function renderLinkIcon() {
 
   return iconSvg
 }
+
+function renderLinkIconFull() {
+  const iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+  const iconPath = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'path'
+  )
+
+  iconSvg.setAttribute('fill', '#574AE8')
+  iconSvg.setAttribute('viewBox', '0 0 22 20')
+  iconSvg.setAttribute('width', '22')
+  iconSvg.setAttribute('height', '20')
+
+  iconPath.setAttribute(
+    'd',
+    'M21.6875 4.90628C21.5614 4.41282 21.3668 3.93947 21.1094 3.50003C20.8621 3.04288 20.5459 2.62655 20.1719 2.26565C19.6296 1.72523 18.9875 1.29539 18.2812 1.00003C16.8596 0.416572 15.2654 0.416572 13.8437 1.00003C13.1762 1.28259 12.5629 1.67912 12.0312 2.1719L11.9531 2.26565L10.9375 3.28128L9.92188 2.26565L9.84375 2.1719C9.31211 1.67912 8.6988 1.28259 8.03125 1.00003C6.60962 0.416572 5.01538 0.416572 3.59375 1.00003C2.88747 1.29539 2.24535 1.72523 1.70312 2.26565C0.961505 2.98726 0.436518 3.90193 0.1875 4.90628C0.0550235 5.41631 -0.00804521 5.94188 0 6.46878C0 6.96409 0.0625 7.45784 0.1875 7.93753C0.31849 8.42197 0.50735 8.88887 0.75 9.32815C1.01206 9.77973 1.33253 10.1948 1.70312 10.5625L10.9375 19.7969L20.1719 10.5625C20.5422 10.1985 20.8594 9.78128 21.1094 9.32815C21.6169 8.46113 21.8813 7.47338 21.875 6.46878C21.8831 5.94188 21.82 5.4163 21.6875 4.90628ZM20.4375 6.93756C22 4.39068 16.9567 0.47538 16.4375 1L14.5 2L10.3479 4.90628H11.4646C17.4803 -1.10935 15.1288 3.60556 14.9375 3.28128C15.9375 2.40628 14.1003 3.35392 14 3C13.9199 2.64612 15.9406 4.80037 15.9375 4.43756C15.9397 4.06437 16.919 2.8643 17 2.5C17.0973 2.14506 10.7031 3.59375 4 4.5C4 4.5 5.1688 6.59378 5.43755 6.32815C5.83895 5.93213 7.48234 8.22357 8 8C9.04315 7.58269 5.3944 4.48897 6.43755 4.90628C6.95317 5.12034 7.0438 4.04381 7.43755 4.43756L10.9062 5.46878L15 3C15.3935 2.60555 7.48567 9.71419 8 9.5C9.04315 9.08269 16.6131 1.98897 17.6562 2.40628C18.1734 2.62971 18.6453 2.94846 19.0469 3.34378C19.3187 3.60159 19.5469 3.90159 19.7188 4.2344C20.0807 4.87262 20.2692 5.59447 20.2656 6.32815C20.2869 6.70569 20.3491 6.90141 20.2656 7.27022L20.4375 6.93756Z'
+  )
+
+  iconSvg.appendChild(iconPath)
+
+  return iconSvg
+}
+
