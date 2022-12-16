@@ -133,7 +133,7 @@ function renderLinkIconFull() {
   iconSvg.setAttribute('fill', '#574AE8')
   iconSvg.setAttribute('viewBox', '0 0 22 20')
   iconSvg.setAttribute('width', '22')
-  iconSvg.setAttribute('height', '20')
+  iconSvg.setAttribute('height', '18')
 
   iconPath.setAttribute(
     'd',
