@@ -1,4 +1,5 @@
 import { isFavoriteClick, notFavoritCick, renderIcon, renderIconFull, setNotFavorite } from './favorite.js'
+import { scrollReveal } from './scrollreveal.js'
 
 const cardList = document.getElementById('cards')
 const filterElement = document.querySelector('.input-group input')
@@ -49,6 +50,8 @@ fetch('https://www.vagalume.com.br/news/index.js')
       card.appendChild(subtitle)
 
       cardList.appendChild(card)
+
+      scrollReveal()
     })
   })
   .catch(error => {
