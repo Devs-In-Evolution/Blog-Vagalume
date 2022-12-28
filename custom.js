@@ -33,12 +33,23 @@ fetch('https://www.vagalume.com.br/news/index.js')
       card.appendChild(subtitle)
 
       cardList.appendChild(card)
+
+      ScrollReveal({
+        origin: 'top',
+        distance: '30px',
+        duration: 700,
+      })
+      .reveal(`
+        #header,
+        #posts,
+        #cards,
+        #cards .cards`
+      )
     })
   })
   .catch(error => {
     console.log(`Erro na requisição ${error}`)
-  })
-
+})
 
 function filterCards() {
   if (filterElement.value) {
