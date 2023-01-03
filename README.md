@@ -34,6 +34,6 @@ O deploy do projeto foi feito em github-pages, você pode acessar e conferir ace
 <br/>
 
 <div style="display: flex; gap: 1.6rem">
-    <img style="width: 50%;" src="https://user-images.githubusercontent.com/88351152/210406460-c1edbd19-fac5-4627-a215-8964d80000e0.png" alt="Ilustração do projeto versão dark"/>
-    <img style="width: 50%;" src="https://user-images.githubusercontent.com/88351152/210406470-ca93bf57-e3f1-424b-81fb-366ad19011a8.png" alt="Ilustração do projeto versão light"/>
+    <img style="width: 49%;" src="https://user-images.githubusercontent.com/88351152/210406460-c1edbd19-fac5-4627-a215-8964d80000e0.png" alt="Ilustração do projeto versão dark"/>
+    <img style="width: 49%;" src="https://user-images.githubusercontent.com/88351152/210406470-ca93bf57-e3f1-424b-81fb-366ad19011a8.png" alt="Ilustração do projeto versão light"/>
 </div>
