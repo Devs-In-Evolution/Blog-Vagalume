@@ -1,32 +1,29 @@
-const getInitialTheme = () => {
-    if (localStorage) {
-        const storePrefs = localStorage.getItem('color-theme');
-        if (typeof storePrefs === 'string') {
-            return storePrefs;
-        }
-    }
+export function handleChangeTheme() {
+    const storePrefs = localStorage.getItem('color-theme')
 
-    return 'dark';
-}
+    if (storePrefs === 'light') {
+        document.body.classList.add('light')
+        document.body.style.background = '#F3F7F3'
+        
+    } else document.body.style.background = '#151515'
 
-const theme = getInitialTheme();
+    const toggle = document.getElementById('toggle')
 
-if (theme === 'dark') {
-    document.body.style.background = '#151515';
-} else {
-    document.body.classList.add("light");
-    document.body.style.background = '#F3F7F3';
-}
-
-export function handleChangeTheme(toggle) {
     toggle.addEventListener("click", () => {
-        if (theme === 'dark') {
-            window.localStorage.setItem("color-theme", "light");
+        const iconMoon = document.querySelector('.ph-moon-bold')
+        const displayIconMoon = window.getComputedStyle(iconMoon, null).getPropertyValue('display')
+
+        if (displayIconMoon === 'block') {
+            document.body.classList.remove('light')
+            document.body.style.background = '#151515'
+
+            localStorage.setItem('color-theme', 'dark')
         } else {
-            window.localStorage.setItem("color-theme", "dark");
+            document.body.classList.add('light')
+            document.body.style.background = '#F3F7F3'
+
+            localStorage.setItem('color-theme', 'light')
         }
-    
-        location.reload()
-    });
+    })
 }
 

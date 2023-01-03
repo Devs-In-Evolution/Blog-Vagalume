@@ -8,9 +8,7 @@ const cards = cardList.children
 
 filterElement.addEventListener('input', filterCards)
 
-const toggle = document.getElementById('toggle')
-
-handleChangeTheme(toggle)
+handleChangeTheme()
 
 fetch('https://www.vagalume.com.br/news/index.js')
   .then(response => response.json())
