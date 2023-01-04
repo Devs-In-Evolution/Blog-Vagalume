@@ -31,7 +31,7 @@ fetch('https://www.vagalume.com.br/news/index.js')
 
       isFavoriteClick(icon, object.id)
       notFavoritCick(iconFull, object.id)
-
+      
       // const title = document.createElement('h1')
       // title.textContent = object.headline
 
@@ -69,7 +69,7 @@ fetch('https://www.vagalume.com.br/news/index.js')
 function filterCards() {
   if (filterElement.value) {
     for (let card of cards) {
-      let title = card.querySelector('h1')
+      let title = card.querySelector('a')
       title = title.textContent.toLowerCase()
 
       let filterText = filterElement.value.toLowerCase()
