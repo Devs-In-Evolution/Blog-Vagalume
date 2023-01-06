@@ -31,9 +31,13 @@ fetch('https://www.vagalume.com.br/news/index.js')
 
       isFavoriteClick(icon, object.id)
       notFavoritCick(iconFull, object.id)
-
-      const title = document.createElement('h1')
-      title.textContent = object.headline
+      
+      
+      const titleLink = document.createElement('a')
+      titleLink.innerText = object.headline
+      titleLink.href = object.url
+      titleLink.target = "_blank"
+      
 
       const subtitle = document.createElement('p')
       subtitle.textContent = object.kicker
@@ -46,7 +50,7 @@ fetch('https://www.vagalume.com.br/news/index.js')
         header.appendChild(icon)
 
       card.appendChild(header)
-      card.appendChild(title)
+      card.appendChild(titleLink)
       card.appendChild(subtitle)
 
       cardList.appendChild(card)
@@ -62,7 +66,7 @@ fetch('https://www.vagalume.com.br/news/index.js')
 function filterCards() {
   if (filterElement.value) {
     for (let card of cards) {
-      let title = card.querySelector('h1')
+      let title = card.querySelector('a')
       title = title.textContent.toLowerCase()
 
       let filterText = filterElement.value.toLowerCase()

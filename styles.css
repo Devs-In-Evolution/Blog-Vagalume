@@ -9,7 +9,6 @@
     font-size: 62.5%;
     --bg-header: linear-gradient(88.27deg, #869C2B 0%, #5B7020 100%);
     --white: #FFFFFF;
-
     --gray-800: #151515;
     --gray-900: #121212;
     --gray-400: #717171;
@@ -128,7 +127,7 @@ body {
 }
 
 
-#posts h1 {
+#posts a {
 
     font-weight: 400;
     font-size: 2.6rem;
@@ -138,6 +137,8 @@ body {
     padding-inline: 2.4rem;
 
     color: var(--green);
+    text-decoration: none;
+    display: block;
 }
 
 #posts p {
