@@ -9,11 +9,14 @@
     font-size: 62.5%;
     --bg-header: linear-gradient(88.27deg, #869C2B 0%, #5B7020 100%);
     --white: #FFFFFF;
+    
+    --gray-50: #F3F7F3;
+    --gray-100: #C0BEBE;
+    --gray-400: #717171;
+
     --gray-800: #151515;
     --gray-900: #121212;
-    --gray-400: #717171;
     --green: #99B236;
-    --gray-100: #C0BEBE;
     --transparent: rgba(255, 255, 255, 0.2);
 }
 
@@ -43,9 +46,30 @@ body {
     justify-content: space-between;
 }
 
+#header header > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 #header h2 {
     color: var(--white);
     font-size: 2.4rem;
+}
+
+#header header > div button {
+    background: transparent; 
+    border: 0;
+}
+
+
+.ph-moon-bold, .ph-sun-bold {
+    color: var(--gray-100);
+    font-size: 1.6rem;
+}
+
+body .ph-moon-bold {
+    display: none;
 }
 
 /* ========================== INPUT =============================================== */
@@ -89,6 +113,8 @@ body {
 #posts {
     background: var(--gray-800);
 }
+
+
 
 #posts .cards {
     padding-block: 10rem;
@@ -151,4 +177,28 @@ body {
 
 
     color: var(--gray-100);
+}
+
+
+/* ========================== Theme-Light =============================================== */
+
+.light .ph-sun-bold {
+    display: none;
+}
+
+.light .ph-moon-bold {
+    display: block;
+    color: var(--gray-100);
+}
+
+.light #posts {
+    background: var(--gray-50);
+}
+
+.light #posts .card {
+    background: var(--white);
+}
+
+.light #posts p {
+    color: var(--gray-400);
 }

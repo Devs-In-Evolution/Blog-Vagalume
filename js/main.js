@@ -1,11 +1,14 @@
 import { isFavoriteClick, notFavoritCick, renderIcon, renderIconFull, setNotFavorite } from './favorite.js'
 import { scrollReveal } from './scrollreveal.js'
+import { handleChangeTheme } from './theme.js'
 
 const cardList = document.getElementById('cards')
 const filterElement = document.querySelector('.input-group input')
 const cards = cardList.children
 
 filterElement.addEventListener('input', filterCards)
+
+handleChangeTheme()
 
 fetch('https://www.vagalume.com.br/news/index.js')
   .then(response => response.json())
